@@ -78,12 +78,11 @@ public class ProfileServlet extends HttpServlet {
        //Profile prof= new Profile("ever","10");
        
           Gson gson = new Gson();
-           /* List<String> items = new ArrayList<String>();
-            items.add("Juan");
-            items.add("Pedro");
-            items.add("José");
-            items.add("María");
-            items.add("Sofía");*/
+          /* items.add(new Profile(1,"Ever Carlos Rojas"));
+            items.add(new Profile(2,"Luis Carlos Rojas"));
+            items.add(new Profile(3,"Piter Carlos Rojas"));
+            items.add(new Profile(4,"Rosman Carlos De la Cruz"));
+            items.add(new Profile(5,"Abner Campojo"));*/
           List<Profile> items = (List<Profile>) new ArrayList<Profile>();// con ArrayList= Sirve para acceder a elementos
             items.add(new Profile(1,"Ever Carlos Rojas"));
             items.add(new Profile(2,"Luis Carlos Rojas"));
