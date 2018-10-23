@@ -5,8 +5,14 @@
  */
 package ecr.servlet;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -63,11 +69,23 @@ public class ProfileServlet extends HttpServlet {
   
     private void all(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String request_method = request.getParameter("url") == null ? "" : request.getParameter("url");
+        /*String request_method = request.getParameter("url") == null ? "" : request.getParameter("url");
         String jtStartIndex = request.getParameter("jtStartIndex") == null ? "" : request.getParameter("jtStartIndex");
         String jtPageSize = request.getParameter("jtPageSize") == null ? "" : request.getParameter("jtPageSize");
-        String search = request.getParameter("search") == null ? "" : request.getParameter("search");
-        System.out.println(request_method+" - "+jtStartIndex+" - "+jtPageSize+" - "+search);
+        String search = request.getParameter("search") == null ? "" : request.getParameter("search");*/
+       //Profile prof= new Profile("ever","10");
+       
+          Gson gson = new Gson();
+            List<String> items = new ArrayList<String>();
+            items.add("Juan");
+            items.add("Pedro");
+            items.add("José");
+            items.add("María");
+            items.add("Sofía");
+          
+         response.getWriter().print(gson.toJson(items));
+       
+        
     }
       
 
