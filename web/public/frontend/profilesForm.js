@@ -37,7 +37,7 @@ callbacks['profiles'] = function () {
                     edit: false,
                     list: false
                 },
-                perfil: {
+                description: {
                     title: 'Perfil'
                 }
             },

@@ -7,11 +7,13 @@ package ecr.servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import ecr.beans.Profile;
 
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -76,14 +78,24 @@ public class ProfileServlet extends HttpServlet {
        //Profile prof= new Profile("ever","10");
        
           Gson gson = new Gson();
-            List<String> items = new ArrayList<String>();
+           /* List<String> items = new ArrayList<String>();
             items.add("Juan");
             items.add("Pedro");
             items.add("José");
             items.add("María");
-            items.add("Sofía");
-          
-         response.getWriter().print(gson.toJson(items));
+            items.add("Sofía");*/
+          List<Profile> items = (List<Profile>) new ArrayList<Profile>();// con ArrayList= Sirve para acceder a elementos
+            items.add(new Profile(1,"Ever Carlos Rojas"));
+            items.add(new Profile(2,"Luis Carlos Rojas"));
+            items.add(new Profile(3,"Piter Carlos Rojas"));
+            items.add(new Profile(4,"Rosman Carlos De la Cruz"));
+            items.add(new Profile(5,"Abner Campojo"));
+            
+            HashMap outHash = new HashMap(); // HashMap= Sirve para asociación clave valor
+            outHash.put("Result", "OK");
+            outHash.put("TotalRecordCount", 0);
+            outHash.put("Records", items);
+         response.getWriter().print(gson.toJson(outHash));
        
         
     }
