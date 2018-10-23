@@ -15,10 +15,10 @@ callbacks['profiles'] = function () {
             paging: true,
             sorting: true,
             actions: {
-                listAction:'/profiles/list',
-                createAction: '/profiles/create',
-                updateAction: '/profiles/update',
-                deleteAction: '/profiles/delete'
+                listAction:"./profiles?url=list",
+                createAction: './profiles?url=create',
+                updateAction: './profiles?url=update',
+                deleteAction: './profiles?url=delete'
             },
             messages: {
                 addNewRecord: 'Nuevo Perfil',
@@ -42,11 +42,11 @@ callbacks['profiles'] = function () {
                 }
             },
             formCreated: function (event, data) {
-                data.form.find('input[name="perfil"]').attr('onkeypress','return soloLetras(event)');
+               // data.form.find('input[name="perfil"]').attr('onkeypress','return soloLetras(event)');
             },
             formSubmitting: function (event, data) {
                 var bval = true;
-                bval = bval && data.form.find('input[name="perfil"]').required();
+              //  bval = bval && data.form.find('input[name="perfil"]').required();
                 return bval;
             }
         });

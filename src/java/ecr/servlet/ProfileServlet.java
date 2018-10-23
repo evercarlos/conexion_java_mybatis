@@ -33,13 +33,20 @@ public class ProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
           String respuesta = request.getParameter("url") == null ? "" : request.getParameter("url");
+         // System.out.println("hola "+respuesta);
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
               switch (respuesta) {
-                case "2":
-                    // noticia(request, response);
+                case "list":
+                    all(request, response);
                     break;
-                case "1":
+                case "create":
+                    //  noticias(request, response);
+                    break;
+               case "update":
+                    //  noticias(request, response);
+                    break;
+                case "delete":
                     //  noticias(request, response);
                     break;
                 default:
@@ -49,10 +56,20 @@ public class ProfileServlet extends HttpServlet {
         }
     }
     
-  private void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.getRequestDispatcher("./view/profiles/index.jsp").forward(request, response);
     }
+  
+    private void all(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String request_method = request.getParameter("url") == null ? "" : request.getParameter("url");
+        String jtStartIndex = request.getParameter("jtStartIndex") == null ? "" : request.getParameter("jtStartIndex");
+        String jtPageSize = request.getParameter("jtPageSize") == null ? "" : request.getParameter("jtPageSize");
+        String search = request.getParameter("search") == null ? "" : request.getParameter("search");
+        System.out.println(request_method+" - "+jtStartIndex+" - "+jtPageSize+" - "+search);
+    }
+      
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

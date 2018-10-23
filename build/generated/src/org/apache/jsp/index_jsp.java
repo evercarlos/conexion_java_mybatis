@@ -59,6 +59,14 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<link href=\"public/css/jtable/jquery-ui.css\" rel=\"stylesheet\">\n");
       out.write("<link href=\"public/css/i-check/icheck.css\" rel=\"stylesheet\">\n");
       out.write("\n");
+      out.write("\n");
+      out.write("    <script>\n");
+      out.write("        var width_page = (screen.width > 480) ? 480 : 320;\n");
+      out.write("        var base_url = '{{ url('/') }}';\n");
+      out.write("\n");
+      out.write("        var show_list_ = !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));\n");
+      out.write("\n");
+      out.write("    </script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div class=\"row\">\n");
