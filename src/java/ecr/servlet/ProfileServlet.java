@@ -7,7 +7,7 @@ package ecr.servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import ecr.beans.Profile;
+import ecr.pojos.Profile;
 
 
 import java.io.IOException;

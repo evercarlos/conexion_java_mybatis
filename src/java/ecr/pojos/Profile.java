@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ecr.beans;
+package ecr.pojos;
 
 /**
  *
@@ -13,8 +13,15 @@ public class Profile {
     int id;
     String description;
 
+    public Profile(){
+        
+    }
     public Profile(int id, String description) {
         this.id = id;
+        this.description = description;
+    }
+    
+    public Profile(String description) {
         this.description = description;
     }
 

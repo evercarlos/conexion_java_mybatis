@@ -2,13 +2,8 @@
 <!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-     <typeAliases>
-        <typeAlias alias ="Profile" type="ecr.beans.Profile"/>
-
-    </typeAliases>
-    
-    <environments default="ARA">
-        <environment id="ARA">
+    <environments default="SYSTEMECR">
+        <environment id="SYSTEMECR">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="org.postgresql.Driver"/>
@@ -22,7 +17,7 @@
     
     <mappers>
       
-        <mapper resource="ecr/data/Profile.xml"></mapper>
+        <mapper resource="ecr/data/ProfileMapper.xml"></mapper>
     </mappers>
 </configuration>
 
