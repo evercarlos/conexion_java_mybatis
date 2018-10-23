@@ -7,6 +7,7 @@ package ecr.servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import ecr.beans.ProfileBean;
 import ecr.pojos.Profile;
 
 
@@ -84,12 +85,12 @@ public class ProfileServlet extends HttpServlet {
             items.add(new Profile(4,"Rosman Carlos De la Cruz"));
             items.add(new Profile(5,"Abner Campojo"));*/
           List<Profile> items = (List<Profile>) new ArrayList<Profile>();// con ArrayList= Sirve para acceder a elementos
-            items.add(new Profile(1,"Ever Carlos Rojas"));
+           items.add(new Profile(1,"Ever Carlos Rojas"));
             items.add(new Profile(2,"Luis Carlos Rojas"));
             items.add(new Profile(3,"Piter Carlos Rojas"));
             items.add(new Profile(4,"Rosman Carlos De la Cruz"));
             items.add(new Profile(5,"Abner Campojo"));
-            
+            // System.out.println(new ProfileBean().getAll());
             HashMap outHash = new HashMap(); // HashMap= Sirve para asociación clave valor
             outHash.put("Result", "OK");
             outHash.put("TotalRecordCount", 0);

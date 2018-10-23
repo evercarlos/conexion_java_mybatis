@@ -30,7 +30,7 @@ public class ProfileBean {
         this.profile = profile;
     }
     
-    public String save(){
+    public String save_profile(){
         profile.setId(-1);
         SqlSession session= new MyBatisUtil().getSession();
         if(session!=null){
@@ -47,7 +47,7 @@ public class ProfileBean {
         SqlSession session= new MyBatisUtil().getSession();
         if(session!=null){
             try{
-                session.selectList("Profile.getAll");
+                list_=session.selectList("Profile.getAll");
             }finally{
                 session.close();
             }

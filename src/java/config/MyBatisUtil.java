@@ -17,7 +17,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
  * @author EVER CARLOS ROJAS
  */
 public class MyBatisUtil {
-    private String resource = "ecr.config.pruebaSql.xml";
+    private String resource = "config/pruebaSql.xml";
     private SqlSession session = null;
     
     public SqlSession getSession(){
