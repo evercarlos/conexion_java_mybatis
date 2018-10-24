@@ -99,6 +99,7 @@ public class ProfileServlet extends HttpServlet {
    
            if (!value.equals("")) {
                 search_ = value;/*"where perfiles.description ilike '%" + value + "%'";*/
+                query = search_;
            }
          
   
@@ -108,7 +109,7 @@ public class ProfileServlet extends HttpServlet {
             params_.put("start", Integer.parseInt(request.getParameter("jtStartIndex")));
        
             //int count_=new ProfileBean().getAll(params_).size();
-               
+               System.out.println(query);
             HashMap outHash = new HashMap(); // HashMap= Sirve para asociación clave valor
             outHash.put("Result", "OK");
             outHash.put("TotalRecordCount", new ProfileBean().getCount(query));
