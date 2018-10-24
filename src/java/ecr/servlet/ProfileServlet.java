@@ -75,26 +75,20 @@ public class ProfileServlet extends HttpServlet {
         /*String request_method = request.getParameter("url") == null ? "" : request.getParameter("url");
         String jtStartIndex = request.getParameter("jtStartIndex") == null ? "" : request.getParameter("jtStartIndex");
         String jtPageSize = request.getParameter("jtPageSize") == null ? "" : request.getParameter("jtPageSize");
-        String search = request.getParameter("search") == null ? "" : request.getParameter("search");*/
-       //Profile prof= new Profile("ever","10");
+        String search = request.getParameter("search") == null ? "" : request.getParameter("search");
+       String jtSorting = request.getParameter("jtSorting") == null ? "" : request.getParameter("jtSorting");*/
        
           Gson gson = new Gson();
-          /* items.add(new Profile(1,"Ever Carlos Rojas"));
+         // List<ProfileBean> items = (List<ProfileBean>) new ArrayList<ProfileBean>();// con ArrayList= Sirve para acceder a elementos
+           /*items.add(new Profile(1,"Ever Carlos Rojas"));
             items.add(new Profile(2,"Luis Carlos Rojas"));
             items.add(new Profile(3,"Piter Carlos Rojas"));
             items.add(new Profile(4,"Rosman Carlos De la Cruz"));
-            items.add(new Profile(5,"Abner Campojo"));*/
-          List<Profile> items = (List<Profile>) new ArrayList<Profile>();// con ArrayList= Sirve para acceder a elementos
-           items.add(new Profile(1,"Ever Carlos Rojas"));
-            items.add(new Profile(2,"Luis Carlos Rojas"));
-            items.add(new Profile(3,"Piter Carlos Rojas"));
-            items.add(new Profile(4,"Rosman Carlos De la Cruz"));
-            items.add(new Profile(5,"Abner Campojo"));
-            // System.out.println(new ProfileBean().getAll());
+            items.add(new Profile(5,"Abner Campojo"));*/     
             HashMap outHash = new HashMap(); // HashMap= Sirve para asociación clave valor
             outHash.put("Result", "OK");
             outHash.put("TotalRecordCount", 0);
-            outHash.put("Records", items);
+            outHash.put("Records", new ProfileBean().getAll());
          response.getWriter().print(gson.toJson(outHash));
        
         
