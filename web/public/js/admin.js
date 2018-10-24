@@ -57,3 +57,7 @@ var mensajes_validador = function (data) {
         div_mensaje.html(mensaje);
     }
 };
+
+var limpiar_validaciones = function () {
+    $(".mensajes_validador").html('');
+};

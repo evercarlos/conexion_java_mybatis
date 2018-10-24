@@ -31,24 +31,6 @@ public class ProfileBean {
         this.profile = profile;
     }
     
-    public String create(HashMap data){ /* averiguar sin hash */
-        profile.setId(-1);/*cuando una table es autoincremental o serial*/
-        SqlSession session= new MyBatisUtil().getSession();
-        if(session!=null){
-            try{
-             session.insert("Profile.insertCreate",data);
-             session.commit();
-            }finally{
-                session.close();
-            }
-        }else{
-            System.out.println("ERROR");
-        }
-        
-        return "index";
-        
-    }
-  
     public List<Profile> getAll(HashMap params_){
         List<Profile> list_= null;
         SqlSession session= new MyBatisUtil().getSession();
@@ -65,7 +47,7 @@ public class ProfileBean {
         
     }
     
-      public Integer getCount(String q) {
+    public Integer getCount(String q) {
         SqlSession session = new MyBatisUtil().getSession();
         HashMap hm = new HashMap();
         hm.put("c", q);
@@ -74,6 +56,58 @@ public class ProfileBean {
         } finally {
             session.close();
         }
+    }
+    
+     public String create(HashMap data){ /* averiguar sin hash */
+        profile.setId(-1);/*cuando una table es autoincremental o serial*/
+        SqlSession session= new MyBatisUtil().getSession();
+        if(session!=null){
+            try{
+             session.insert("Profile.insertCreate",data);
+             session.commit();
+            }finally{
+                session.close();
+            }
+        }else{
+            System.out.println("ERROR");
+        }
+        
+        return "index";
+        
+    }
+     
+     public String update(HashMap data){ /* averiguar sin hash */
+       // profile.setId(-1);/*cuando una table es autoincremental o serial*/
+        SqlSession session= new MyBatisUtil().getSession();
+        if(session!=null){
+            try{
+             session.insert("Profile.insertUpdate",data);
+             session.commit();
+            }finally{
+                session.close();
+            }
+        }else{
+            System.out.println("ERROR");
+        }
+        
+        return "index";
+        
+    }
+     
+     public String destroy(HashMap data){ /* averiguar sin hash */
+        SqlSession session = new MyBatisUtil().getSession();
+        if(session!=null){
+            try{
+             session.insert("Profile.destroy",data);
+             session.commit();
+            }finally{
+                session.close();
+            }
+        }else{
+            System.out.println("ERROR");
+        }
+        
+        return "index";
     }
   
 }

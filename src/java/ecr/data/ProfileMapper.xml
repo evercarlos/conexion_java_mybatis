@@ -7,6 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="getAll"  parameterType="HashMap"  resultType="ecr.pojos.Profile">
         select * from perfiles
         where state=true and perfiles.description ilike '%${q}%'
+        order by id asc 
         limit ${limit} offset ${start}
     </select>
     
@@ -19,6 +20,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         INSERT INTO perfiles(description,state)
         VALUES (#{description},true);
     </insert>
+   
+    <update id="insertUpdate" parameterType="HashMap" >
+        UPDATE perfiles
+        SET  description = #{description}
+        WHERE id = #{id}
+    </update>
+    
+    <delete id="destroy"  parameterType="HashMap">
+        delete from perfiles
+        where id = #{id}
+    </delete>
     
 </mapper>
 

@@ -53,10 +53,10 @@ public class ProfileServlet extends HttpServlet {
                       create(request, response);
                     break;
                case "update":
-                    //  noticias(request, response);
+                     update(request, response);
                     break;
                 case "delete":
-                    //  noticias(request, response);
+                     destroy(request, response);
                     break;
                 default:
                     index(request, response);
@@ -92,11 +92,7 @@ public class ProfileServlet extends HttpServlet {
             String query1 =query;
             String q1 = query1;
 
-            String value = request.getParameter("search");
-            
-             List<ProfileBean> items = (List<ProfileBean>) new ArrayList<ProfileBean>();
-             
-   
+            String value = request.getParameter("search");   
            if (!value.equals("")) {
                 search_ = value;/*"where perfiles.description ilike '%" + value + "%'";*/
                 query = search_;
@@ -134,6 +130,41 @@ public class ProfileServlet extends HttpServlet {
         HashMap outHash = new HashMap();
         outHash.put("Result", "OK");
         outHash.put("Record", "[]");
+        response.getWriter().print(gson.toJson(outHash));
+        
+    }
+    
+    private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        
+        Gson gson = new Gson(); 
+       /* Profile obj= new Profile();
+        obj.setDescription("ever");
+        new ProfileBean().create();*/
+        HashMap data_ = new HashMap();
+        String description_ = request.getParameter("description");
+        Integer id_= Integer.parseInt(request.getParameter("id"));
+        data_.put("id",id_);  
+        data_.put("description",description_);  
+       new ProfileBean().update(data_);
+        
+        HashMap outHash = new HashMap();
+        outHash.put("Result", "OK");
+        response.getWriter().print(gson.toJson(outHash));
+        
+    }
+    
+    private void destroy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        Gson gson = new Gson(); 
+        Integer id_= Integer.parseInt(request.getParameter("id"));  
+        System.out.println(id_);
+         HashMap data_ = new HashMap();
+         data_.put("id",id_);
+        new ProfileBean().destroy(data_);
+        
+        HashMap outHash = new HashMap();
+        outHash.put("Result", "OK");
         response.getWriter().print(gson.toJson(outHash));
         
     }
