@@ -7,6 +7,7 @@ package ecr.beans;
 
 import config.MyBatisUtil;
 import ecr.pojos.Profile;
+import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 /*import javax.faces.bean.ManagedBean;
@@ -42,12 +43,12 @@ public class ProfileBean {
         
     }
   
-    public List<Profile> getAll(){
+    public List<Profile> getAll(HashMap params_){
         List<Profile> list_= null;
         SqlSession session= new MyBatisUtil().getSession();
         if(session!=null){
             try{
-                list_=session.selectList("Profile.getAll");
+                list_=session.selectList("Profile.getAll",params_);
             }finally{
                 session.close();
             }
@@ -56,6 +57,17 @@ public class ProfileBean {
         }
         return list_;
         
+    }
+    
+      public Integer getCount(String q) {
+        SqlSession session = new MyBatisUtil().getSession();
+        HashMap hm = new HashMap();
+        hm.put("c", q);
+        try {
+            return (int) session.selectOne("Profile.getCount", hm);
+        } finally {
+            session.close();
+        }
     }
   
 }

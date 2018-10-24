@@ -4,8 +4,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Profile">
      
-    <select id="getAll"  resultType="ecr.pojos.Profile">
+    <select id="getAll"  parameterType="HashMap"  resultType="ecr.pojos.Profile">
         select * from perfiles
+        where perfiles.description ilike '%${q}%'
+        limit ${limit} offset ${start}
     </select>
+    
+    <select id="getCount" parameterType="HashMap" resultType="Integer">
+        select  count(perfiles.id)::integer from perfiles
+        where state=true
+    </select>
+    
 </mapper>
 

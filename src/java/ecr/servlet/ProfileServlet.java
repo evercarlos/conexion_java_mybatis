@@ -85,12 +85,36 @@ public class ProfileServlet extends HttpServlet {
             items.add(new Profile(3,"Piter Carlos Rojas"));
             items.add(new Profile(4,"Rosman Carlos De la Cruz"));
             items.add(new Profile(5,"Abner Campojo"));*/     
+            String search_ = "";
+            String cate = "";
+            String query= "";
+            
+            String query1 =query;
+            String q1 = query1;
+
+            String value = request.getParameter("search");
+            
+             List<ProfileBean> items = (List<ProfileBean>) new ArrayList<ProfileBean>();
+             
+   
+           if (!value.equals("")) {
+                search_ = value;/*"where perfiles.description ilike '%" + value + "%'";*/
+           }
+         
+  
+            HashMap params_ = new HashMap();
+            params_.put("q", search_);
+            params_.put("limit", Integer.parseInt(request.getParameter("jtPageSize")));
+            params_.put("start", Integer.parseInt(request.getParameter("jtStartIndex")));
+       
+            //int count_=new ProfileBean().getAll(params_).size();
+               
             HashMap outHash = new HashMap(); // HashMap= Sirve para asociación clave valor
             outHash.put("Result", "OK");
-            outHash.put("TotalRecordCount", 0);
-            outHash.put("Records", new ProfileBean().getAll());
-         response.getWriter().print(gson.toJson(outHash));
-       
+            outHash.put("TotalRecordCount", new ProfileBean().getCount(query));
+            outHash.put("Records", new ProfileBean().getAll(params_));
+         
+            response.getWriter().print(gson.toJson(outHash));
         
     }
       
