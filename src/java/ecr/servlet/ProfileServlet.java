@@ -50,7 +50,7 @@ public class ProfileServlet extends HttpServlet {
                     all(request, response);
                     break;
                 case "create":
-                    //  noticias(request, response);
+                      create(request, response);
                     break;
                case "update":
                     //  noticias(request, response);
@@ -116,6 +116,25 @@ public class ProfileServlet extends HttpServlet {
             outHash.put("Records", new ProfileBean().getAll(params_));
          
             response.getWriter().print(gson.toJson(outHash));
+        
+    }
+    
+    private void create(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        
+        Gson gson = new Gson(); 
+       /* Profile obj= new Profile();
+        obj.setDescription("ever");
+        new ProfileBean().create();*/
+        HashMap data_ = new HashMap();
+        String description_ = request.getParameter("description");
+        data_.put("description",description_);   
+        new ProfileBean().create(data_);
+        
+        HashMap outHash = new HashMap();
+        outHash.put("Result", "OK");
+        outHash.put("Record", "[]");
+        response.getWriter().print(gson.toJson(outHash));
         
     }
       

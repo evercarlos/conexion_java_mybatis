@@ -31,14 +31,20 @@ public class ProfileBean {
         this.profile = profile;
     }
     
-    public String save_profile(){
-        profile.setId(-1);
+    public String create(HashMap data){ /* averiguar sin hash */
+        profile.setId(-1);/*cuando una table es autoincremental o serial*/
         SqlSession session= new MyBatisUtil().getSession();
         if(session!=null){
-            
+            try{
+             session.insert("Profile.insertCreate",data);
+             session.commit();
+            }finally{
+                session.close();
+            }
         }else{
-            
+            System.out.println("ERROR");
         }
+        
         return "index";
         
     }

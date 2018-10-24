@@ -44,3 +44,16 @@ function generateSearchForm(form_id, btn_id, callback, is_click) {
         e.preventDefault();
     });
 }
+
+var mensajes_validador = function (data) {
+    var div_mensaje = $(".mensajes_validador");
+
+    if (data != '') {
+        var mensaje = '<div class="alert alert-block alert-danger"><button type="button" class="close" data-dismiss="alert"><i class="fa fa-times"></i></button>';
+        for (var property in data) {
+            mensaje += '- ' + data[property] + '<br/>';
+        }
+        mensaje += '</div>';
+        div_mensaje.html(mensaje);
+    }
+};

@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface ProfileMapper {
  List<Profile>getAll();
+ void insertCreate(Profile profile);
 }
